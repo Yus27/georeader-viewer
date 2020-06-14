@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/georeader-viewer/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/georeader-viewer/static/js/main.4c8df8b9.chunk.js",
+    "main.js.map": "/georeader-viewer/static/js/main.4c8df8b9.chunk.js.map",
+    "runtime-main.js": "/georeader-viewer/static/js/runtime-main.157e17cf.js",
+    "runtime-main.js.map": "/georeader-viewer/static/js/runtime-main.157e17cf.js.map",
+    "static/js/2.70cac744.chunk.js": "/georeader-viewer/static/js/2.70cac744.chunk.js",
+    "static/js/2.70cac744.chunk.js.map": "/georeader-viewer/static/js/2.70cac744.chunk.js.map",
+    "index.html": "/georeader-viewer/index.html",
+    "precache-manifest.e7544894b4806ab177628ed8b8ac932a.js": "/georeader-viewer/precache-manifest.e7544894b4806ab177628ed8b8ac932a.js",
+    "service-worker.js": "/georeader-viewer/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/georeader-viewer/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.70cac744.chunk.js.LICENSE.txt": "/georeader-viewer/static/js/2.70cac744.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.157e17cf.js",
+    "static/js/2.70cac744.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.4c8df8b9.chunk.js"
+  ]
+}
