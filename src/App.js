@@ -1,25 +1,21 @@
-import React from 'react';
+import React, { Fragment } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import MainMenu from './components/DialogOpenRad'
+import DialogRadParams from './components/DialogRadParams'
+
 // import Plot from 'react-plotly.js';
-import Plotly from "plotly.js"
-import createPlotlyComponent from 'react-plotly.js/factory';
+import Plotly from "plotly.js";
+import createPlotlyComponent from "react-plotly.js/factory";
 const Plot = createPlotlyComponent(Plotly);
 
 class App extends React.Component {
   render() {
     return (
-      <Plot
-        data={[
-          {
-            x: [1, 2, 3],
-            y: [2, 6, 3],
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: {color: 'red'},
-          },
-          {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
-        ]}
-        layout={{width: 320, height: 240, title: 'A Fancy Plot'}}
-      />
+      <Fragment>
+        <MainMenu show={true}/>
+        <DialogRadParams show={false}/>
+      </Fragment>
     );
   }
 }
