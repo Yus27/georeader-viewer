@@ -5,8 +5,8 @@ import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
-//const API_URL = "https://agile-escarpment-74931.herokuapp.com/";
-const API_URL = "http://127.0.0.1:5000/";
+const API_URL = "https://agile-escarpment-74931.herokuapp.com/";
+// const API_URL = "http://127.0.0.1:5000/";
 
 class DialogOpenRad extends React.Component {
   constructor(props) {

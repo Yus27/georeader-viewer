@@ -20,14 +20,18 @@ class Rad extends React.Component {
                 type: "heatmap",
               },
             ]}
-            layout={{ autosize: true }}
+            layout={{
+              autosize: true,
+              yaxis: { autorange: "reversed", title: { text: "Samples" } },
+              xaxis: { title: { text: "Traces" } },
+            }}
             useResizeHandler={true}
             config={{
-              displayModeBar: false,
+              // displayModeBar: false,
               scrollZoom: true,
               responsive: true,
             }}
-            style={{ width: "100vw", height: "100vh" }}
+            style={{ width: "100vw", height: "75vh" }}
           />
         )}
       </div>

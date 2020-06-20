@@ -94,7 +94,69 @@ class App extends React.Component {
     });
   };
 
+  onChangeStage = (event) => {
+    const newValue = event.target.value;
+    this.setState((prevState) => {
+      return { ...prevState, Stage: newValue };
+    });
+  };
+
+  onChangeTimeBase = (event) => {
+    const newValue = event.target.value;
+    this.setState((prevState) => {
+      return { ...prevState, data: {...prevState.data, TimeBase: newValue} };
+    });
+  };
+
+  onChangeAntDist = (event) => {
+    const newValue = event.target.value;
+    this.setState((prevState) => {
+      return { ...prevState, data: {...prevState.data, AntDist: newValue} };
+    });
+  };
+
+  onChangeDefaultV = (event) => {
+    const newValue = event.target.value;
+    this.setState((prevState) => {
+      return { ...prevState, data: {...prevState.data, DefaultV: newValue} };
+    });
+  };
+
+  onChangeGPRUnit = (event) => {
+    const newValue = event.target.value;
+    this.setState((prevState) => {
+      return { ...prevState, data: {...prevState.data, GPRUnit: newValue} };
+    });
+  };
+
+  onChangeAntenName = (event) => {
+    const newValue = event.target.value;
+    this.setState((prevState) => {
+      return { ...prevState, data: {...prevState.data, AntenName: newValue} };
+    });
+  };
+
+  onChangeFrequency = (event) => {
+    const newValue = event.target.value;
+    this.setState((prevState) => {
+      return { ...prevState, data: {...prevState.data, Frequency: newValue} };
+    });
+  };
+
   render() {
+    let params = {
+      Stage: 1.0,
+      TimeBase: 512.0,
+      AntDist: 0,
+      DefaultV: 0.1,
+      GPRUnit: "",
+      AntenName: "",
+      Frequency: 1000,
+    };
+    if (this.state.data !== null) {
+      params = this.state.data;
+    } 
+
     return (
       <Fragment>
         <MainMenu onSelectMenuElement={this.onSelectMenuElement} />
@@ -105,9 +167,16 @@ class App extends React.Component {
         />
         <DialogRadParams
           show={this.state.isChangingProperties}
-          data={this.state.data}
           onChangeParams={this.onChangeParams}
           onCancelChangeParams={this.onCancelChangeParams}
+          onChangeStage={this.onChangeStage}
+          onChangeTimeBase={this.onChangeTimeBase}
+          onChangeAntDist={this.onChangeAntDist}
+          onChangeDefaultV={this.onChangeDefaultV}
+          onChangeGPRUnit={this.onChangeGPRUnit}
+          onChangeAntenName={this.onChangeAntenName}
+          onChangeFrequency={this.onChangeFrequency}
+          params={params}
         />
         <Rad show={this.state.isRad} data={this.state.data} />
       </Fragment>
