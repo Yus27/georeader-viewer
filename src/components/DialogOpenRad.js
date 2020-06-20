@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
@@ -12,60 +13,99 @@ class DialogOpenRad extends React.Component {
     super(props);
     this.state = {
       selectedFile: null,
-      data: null,
+      loading: false,
     };
   }
 
-  onFileChange = (event) => {
+  setLoading = (loading) => {
     this.setState((prevState) => {
-      console.log(event.target.files[0]);
       return {
         ...prevState,
-        selectedFile: event.target.files[0],
+        loading: loading,
+      };
+    });
+  };
+
+  onFileChange = (event) => {
+    console.log("onFileChange");
+    if (event.target === null) return;
+    if (event.target.files == null) return;
+    const selectedFile = event.target.files[0];
+    // console.log(selectedFile);
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        selectedFile: selectedFile,
       };
     });
   };
 
   onFileUpload = async (event) => {
-    if (this.state.selectedFile === null) return;
-    const formData = new FormData();
-    formData.append(
-      "file",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-    const res = await axios.post(API_URL, formData);
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        data: res.data,
-      };
-    });
+    console.log("onFileUpload");
+    let data;
+    if (this.state.selectedFile === null) {
+      data = null;
+    } else {
+      const formData = new FormData();
+      formData.append(
+        "file",
+        this.state.selectedFile,
+        this.state.selectedFile.name
+      );
+      this.setLoading(true);
+      const res = await axios.post(API_URL, formData);
+      data = res.data;
+      console.log(data)
+      if (data.Error === null) {
+        this.setState((prevState) => {
+          return {
+            ...prevState,
+            selectedFile: null,
+          };
+        });
+        this.props.onOpenRad(data);
+        this.setLoading(false);
+      }
+      else {
+        alert(data.Error);
+        data = null;
+        this.setLoading(false);
+      }
+    }
   };
 
   render() {
+    const btnCaption = !this.state.loading ? (
+      "Open"
+    ) : (
+      <Spinner
+        as="span"
+        animation="border"
+        size="sm"
+        role="status"
+        aria-hidden="true"
+      />
+    );
+
     return (
       <Form>
-        <Modal show={this.props.show}>
+        <Modal show={this.props.show} onHide={this.props.onCancelOpenRad}>
           <Modal.Header closeButton>
             <Modal.Title>Open GPR data</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form.Group controlId="formGPRKind">
-              <Form.Control as="select">
-                <option>ЛОЗА (txt)</option>
-                <option>ОКО (gpr)</option>
-                <option>ОКО (gpr2)</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="formGPRKind">
-              <Form.File id="rad-file" onChange={this.onFileChange} />
-            </Form.Group>
+            <Form.File id="rad-file" onChange={this.onFileChange} />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            <Button variant="primary" onClick={this.onFileUpload}>
-              Submit
+            <Button variant="secondary" onClick={this.props.onCancelOpenRad}>
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              disabled={this.state.selectedFile === null}
+              onClick={this.onFileUpload}
+            >
+              {btnCaption}
             </Button>
           </Modal.Footer>
         </Modal>
