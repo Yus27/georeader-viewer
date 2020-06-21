@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/georeader-viewer/precache-manifest.a24ab276134dbc1fb2c52b80da98bdf0.js"
+  "/georeader-viewer/precache-manifest.264415a99e2545ce0f6f7e4b59f5c9b3.js"
 );
 
 self.addEventListener('message', (event) => {

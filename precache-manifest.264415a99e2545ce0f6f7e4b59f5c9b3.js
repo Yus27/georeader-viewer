@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "566a4b47baf81e9d958803dd079bdcbd",
+    "revision": "3cf16d2d0a31ec5edd15ba651ab7ee8a",
     "url": "/georeader-viewer/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/georeader-viewer/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "7c95678fc6f416cfece8",
+    "revision": "9d663ed2483b4c4e1e6a",
     "url": "/georeader-viewer/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/georeader-viewer/static/js/2.273551c3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7c95678fc6f416cfece8",
-    "url": "/georeader-viewer/static/js/main.1880db64.chunk.js"
+    "revision": "9d663ed2483b4c4e1e6a",
+    "url": "/georeader-viewer/static/js/main.309d3e27.chunk.js"
   },
   {
     "revision": "548b3b0477b0d74b4b20",
